@@ -9,8 +9,9 @@ from rest_framework.decorators import action
 from .models import Person
 import pandas as pd
 
+
 def index(request):
-    return render(request, 'home/index.html')
+    return render(request, "home/index.html")
 
 
 class FileView(APIView):
@@ -45,11 +46,8 @@ class FileView(APIView):
                     designation=designation,
                     address=address,
                 )
-                persons.append(person)
-
-            for person in persons:
-                if Person.objects.filter(emp_id=person.emp_id).exists():
-                    persons.remove(person)
+                if not Person.objects.filter(emp_id=person.emp_id).exists():
+                    persons.append(person)
 
             Person.objects.bulk_create(persons)
             return Response(
@@ -58,8 +56,10 @@ class FileView(APIView):
             )
 
         except Exception as e:
+            error_message = str(e)
             return Response(
-                {"status": False, "message": e}, status=status.HTTP_400_BAD_REQUEST
+                {"status": False, "message": error_message},
+                status=status.HTTP_400_BAD_REQUEST
             )
 
 
@@ -79,4 +79,3 @@ class PersonView(viewsets.ModelViewSet):
                 {"error": "Please provide a name parameter"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-    
