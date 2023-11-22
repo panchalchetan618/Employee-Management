@@ -9,10 +9,19 @@
     </head>
     <body>
         <div class="section-one">
-            <form onsubmit="">
+            <form onsubmit="getPersonDetails(event)">
                 <label for="name">Enter Name: </label>
                 <input type="text" name="name" id="name" />
                 <button type="submit">Get Details</button>
+            </form>
+            <p id="personDetails"></p>
+        </div>
+
+        <div class="section-two">
+            <form onsubmit="" enctype="multipart/form-data">
+                <label for="file">Upoload Excel (.xlsx) file: </label>
+                <input type="file" name="file" id="file" accept=".xlsx" />
+                <button type="submit">Upload Data</button>
             </form>
         </div>
 
