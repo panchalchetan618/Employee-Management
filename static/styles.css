@@ -12,6 +12,21 @@ body {
     text-align: center;
 }
 
+.success,
+.danger,
+.warning {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+}
+
+.danger {
+    color: red;
+}
+
 .container {
     display: flex;
     justify-content: space-around;

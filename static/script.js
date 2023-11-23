@@ -6,6 +6,9 @@ function getPersonDetails(event) {
     const empResult = document.getElementById("empResult");
     const table = document.getElementById("table");
 
+    empResult.innerHTML = "";
+    result.innerHTML = "";
+
     fetch(`http://127.0.0.1:8000/persons/by_name/?name=${name}`, {
         method: "GET",
         headers: {
@@ -15,6 +18,7 @@ function getPersonDetails(event) {
         .then((response) => response.json())
         .then((data) => {
             if (data.length > 0) {
+                result.innerHTML = "<div class='center success'>" + data.length + " Employee(s) found</div>"
                 table.classList.remove("hidden");
                 let detailsString = "";
                 data.forEach((person) => {
@@ -29,11 +33,15 @@ function getPersonDetails(event) {
                 });
                 empResult.innerHTML = detailsString;
             } else {
-                result.innerHTML = "No person found with the given name.";
+                result.innerHTML =
+                    "<div class='center danger'>No person found with the given name.</div>";
             }
         })
         .catch((err) => {
-            result.innerHTML = "Error fetching person details: " + err.message;
+            result.innerHTML =
+                "<div class='center danger'>Unable to fetch person details: " +
+                err.message +
+                "</div>";
         });
 }
 
@@ -41,20 +49,25 @@ function uploadFile(event) {
     event.preventDefault();
 
     const file = document.getElementById("file");
+    const result = document.getElementById("result");
     const formData = new FormData();
     const csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0]
         .value;
     formData.append("csrfmiddlewaretoken", csrfToken);
     formData.append("file", file.files[0]);
+    
+    result.innerHTML = "";
 
     fetch("http://127.0.0.1:8000/upload/", { method: "POST", body: formData })
         .then((response) => response.text())
         .then((data) => {
-            let result = document.getElementById("result");
             result.innerHTML =
-                "<div class='center' style='color: green;'>Data Uploaded successfully</div>";
+                "<div class='center success'>Data Uploaded successfully</div>";
         })
         .catch((err) => {
-            alert("Error: " + err.message);
+            result.innerHTML =
+                "<div class='center danger'>Unable to upload Data: " +
+                err.message +
+                "</div>";
         });
 }
