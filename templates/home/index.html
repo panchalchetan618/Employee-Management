@@ -8,25 +8,54 @@
         <title>Employee Management</title>
     </head>
     <body>
-        <div class="section-one">
-            <form onsubmit="getPersonDetails(event)">
-                {% csrf_token %}
-                <label for="name">Enter Name: </label>
-                <input type="text" name="name" id="name" />
-                <button type="submit">Get Details</button>
-            </form>
-            <p id="personDetails"></p>
+        <div class="container">
+            <div class="form-container">
+                <div class="section-one">
+                    <form onsubmit="getPersonDetails(event)">
+                        {% csrf_token %}
+                        <label for="name">Search for Employee: </label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Name"
+                        />
+                        <button type="submit">Get Details</button>
+                    </form>
+                </div>
+                <hr />
+                <div class="section-two">
+                    <form
+                        onsubmit="uploadFile(event)"
+                        enctype="multipart/form-data"
+                    >
+                        {% csrf_token %}
+                        <label for="file">Upoload Excel (.xlsx) file: </label>
+                        <input type="file" name="file" id="file" accept=".xlsx" />
+                        <button type="submit">Upload Data</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div class="section-two">
-            <form onsubmit="uploadFile(event)" enctype="multipart/form-data">
-                {% csrf_token %}
-                <label for="file">Upoload Excel (.xlsx) file: </label>
-                <input type="file" name="file" id="file" accept=".xlsx" />
-                <button type="submit">Upload Data</button>
-            </form>
+        <p id="result"></p>
+        <div class="table-container">
+            <table id="table" class="hidden">
+                <thead>
+                    <tr>
+                        <th>Emp_ID</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                        <th>Designation</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody id="empResult">
+    
+                </tbody>
+            </table>
         </div>
 
         <script src="{% static 'script.js' %}"></script>
     </body>
 </html>
+
