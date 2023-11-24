@@ -8,11 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security Confuguration
 
-SECRET_KEY = config("SECRET_KEY")
-DEBUG = config("DEBUG", cast=bool)
-ALLOWED_HOSTS = config(
-    "ALLOWED_HOSTS", default="", cast=lambda v: [s.strip() for s in v.split(",")]
-)
+SECRET_KEY = "(7ayi)oabt2$58a49y^^ayubl2x-&^gbeh71cbp8g%hnx-^*70d#gewieh7pq!6181k=4ol-hevwlef=e_^i0yxvm17-p7e+"
+DEBUG = False
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
