@@ -6,10 +6,10 @@ This Application is made using Django Framework, in this application we can uplo
 ## How to use?
 #### Make sure Python 3 is Installed
 
-Clone the repository. [Click here](https://github.com/panchalchetan618/Employee-Management.git)
+Clone the Project.
 
 ```bash
-  https://github.com/panchalchetan618/Employee-Management.git
+  git clone https://github.com/panchalchetan618/Employee-Management.git
 ```
 
 Install Requirements
