@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security Confuguration
 
 SECRET_KEY = "(7ayi)oabt2$58a49y^^ayubl2x-&^gbeh71cbp8g%hnx-^*70d#gewieh7pq!6181k=4ol-hevwlef=e_^i0yxvm17-p7e+"
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
