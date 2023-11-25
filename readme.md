@@ -3,7 +3,7 @@
 
 This Application is made using Django Framework, in this application we can upload Excel File containing Employee data and save data to Django Database.
 
-## How to use?
+## How to use in Local Environment?
 #### Make sure Python 3 is Installed
 
 Clone the Project.
@@ -31,4 +31,3 @@ To run tests, run the following command
 ```bash
   python manage.py test
 ```
-
