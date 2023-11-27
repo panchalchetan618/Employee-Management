@@ -12,6 +12,12 @@ Clone the Project.
   git clone https://github.com/panchalchetan618/Employee-Management.git
 ```
 
+Open Directory
+
+```bash
+  cd Employee-Management
+```
+
 Install Requirements
 
 ```bash
